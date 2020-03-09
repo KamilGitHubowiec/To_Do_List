@@ -1,0 +1,59 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-decoration: none;
+    list-style: none;
+    resize: none;
+    box-sizing: inherit;
+}
+
+.container {
+    height: 80vh;
+    background-color: rgb(250, 246, 246);
+    width: 25%;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header {
+    background-image: url(to-do.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 25vh;
+    border-radius: 10px 10px 0 0;
+}
+
+.content {
+    height: 55vh;
+}
+
+.list {
+    height: 45vh;
+}
+
+.add-item {
+    height: 10vh;
+    float: left;
+}
+
+.add-item__input {
+    display: inline-block;
+}
+
+.add-item__button {
+    display: inline-block;
+}
+
+
+
+
+
+
+
+
