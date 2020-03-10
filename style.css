@@ -10,6 +10,10 @@
     box-sizing: inherit;
 }
 
+body {
+    background-color: #102a54;
+}
+
 .container {
     height: 80vh;
     background-color: rgb(250, 246, 246);
@@ -29,24 +33,24 @@
     border-radius: 10px 10px 0 0;
 }
 
-.content {
-    height: 55vh;
+#content {
+    height: 45vh;
 }
 
 .list {
-    height: 45vh;
+    height: 100%;
 }
 
 .add-item {
     height: 10vh;
-    float: left;
+    width: 100%;
 }
 
-.add-item__input {
+#add-item__input {
     display: inline-block;
 }
 
-.add-item__button {
+#add-item__button {
     display: inline-block;
 }
 
