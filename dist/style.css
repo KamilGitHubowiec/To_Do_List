@@ -26,7 +26,7 @@ body {
 }
 
 .header {
-    background-image: url(to-do.jpg);
+    background-image: url(img/to-do.jpg);
     background-size: cover;
     background-position: center;
     height: 25vh;
@@ -35,24 +35,35 @@ body {
 
 #content {
     height: 45vh;
+    overflow: scroll;
 }
 
 .list {
     height: 100%;
 }
 
-.add-item {
+.item {
+    display: flex;
+}
+
+.edit {
+    margin: 0 10px 0 10px;
+}
+
+.add {
     height: 10vh;
     width: 100%;
 }
 
-#add-item__input {
+#add__input {
     display: inline-block;
 }
 
-#add-item__button {
+#add__button {
     display: inline-block;
 }
+
+
 
 
 

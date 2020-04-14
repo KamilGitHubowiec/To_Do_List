@@ -1,0 +1,26 @@
+{
+  "name": "to_do_list",
+  "version": "1.0.0",
+  "description": "To Do List",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KamilGitHubowiec/To_Do_List.git"
+  },
+  "author": "Kamil G",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KamilGitHubowiec/To_Do_List/issues"
+  },
+  "homepage": "https://github.com/KamilGitHubowiec/To_Do_List#readme",
+  "devDependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
