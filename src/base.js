@@ -1,8 +1,11 @@
+// Get all the DOM elements
 export const elements = {
     list: document.querySelector('.list'),
+    listAll: document.querySelectorAll('.list'),
     item: document.querySelector('.item'),
-    edit: document.querySelector('.edit'),
-    delete: document.querySelector('.delete'),
-    input: document.querySelector('#add__input'),
-    addButton: document.querySelector('#add__button')
+    itemText: document.querySelector('.text'),
+    buttonEdit: document.querySelector('.edit'),
+    buttonDelete: document.querySelector('.delete'),
+    inputAddItem: document.querySelector('#add__input'),
+    buttonAddItem: document.querySelector('#add__button')
 };

@@ -19,10 +19,9 @@ body {
     background-color: rgb(250, 246, 246);
     width: 25%;
     border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    float: left;
+    margin-top: 5vh;
+    margin-left: 5%;
 }
 
 .header {
@@ -33,7 +32,7 @@ body {
     border-radius: 10px 10px 0 0;
 }
 
-#content {
+.content {
     height: 45vh;
     overflow: scroll;
 }
@@ -63,12 +62,41 @@ body {
     display: inline-block;
 }
 
+/* 
+1. Hide input field in regular item
+2. Display input field in edit item mode
+3. Hide label in edit item mode
+*/
+ul li.item input[type=text] {
+    display:none;
+}
+
+ul li.edit-mode input[type=text] {
+    display:inline-block;
+  }
+
+ul li.edit-mode label.text {
+  display:none;
+}
 
 
 
 
 
+/************ COMPLETED LIST ***************/
+.header-completed {
+    background-image: url(img/completed.jpg);
+    background-size: cover;
+    background-position: bottom;
+    height: 25vh;
+    border-radius: 10px 10px 0 0;
+}
 
+.content-completed {
+    height: 55vh;
+    overflow: scroll;
+}
 
-
-
+.list-completed {
+    height: 100%;
+}

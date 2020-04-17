@@ -1,10 +1,9 @@
 import { elements } from './base';
-import { getInput, renderItem, clearInput } from './view';
+import { getInput, renderItem, clearInput, deleteItem, editItem } from './view';
 
 const createItem = () => {
-    // Get input value
+    // Get input value and save it to the query variable
     const query = getInput();
-
     // If there is an input value then render the markup
     if(query) {
         renderItem(query);
@@ -12,83 +11,19 @@ const createItem = () => {
     }
 };
 
-// Add item
-elements.addButton.addEventListener('click', e => {
+// Add item event listener
+elements.buttonAddItem.addEventListener('click', e => {
     e.preventDefault();
     createItem();
 });
 
-// Delete item
-if (elements.delete) {
-    elements.delete.addEventListener('click', e => {
-        let target = e.target.closest('li');
-        target.parentElement.removeChild(li);
+// Delete item && Edit item
+elements.listAll.forEach(item => {
+    item.addEventListener('click', e => {
+        if (e.target.className === 'delete') {
+            deleteItem(e);
+        } else if (e.target.className === 'edit') {
+            editItem(e);
+        }
     });
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const input = document.getElementById('add-item__input');
-// const list = document.querySelector('#content ul');
-
-// document.getElementById('add-item__button').addEventListener('click', () => {
-//     // Take input value
-//     const inputValue = input.value;
-
-//     // Create element
-//     const li = document.createElement('li');
-//     const elem = document.createElement('span');
-//     const del = document.createElement('button');
-
-//     // Add content
-//     elem.textContent = inputValue;
-//     del.textContent = 'Delete';
-
-//     // Add Class    
-//     del.classList.add('delete');
-
-//     if (inputValue !== '') {
-//         // Append to DOM
-//         li.appendChild(elem);
-//         li.appendChild(del);
-//         list.appendChild(li);   
-
-//         // Clear input field
-//         input.value = '';
-//     } else { alert('Add something!');}
-
-//     document.querySelector('.delete').addEventListener('click', () => {
-//         list.removeChild(li);
-//     });
-// });
+});
