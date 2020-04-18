@@ -1,5 +1,5 @@
 import { elements } from './base';
-import { getInput, renderItem, clearInput, deleteItem, editItem } from './view';
+import { getInput, renderItem, clearInput, deleteItem, editItem, completeItem, clearItems } from './view';
 
 const createItem = () => {
     // Get input value and save it to the query variable
@@ -24,6 +24,15 @@ elements.listAll.forEach(item => {
             deleteItem(e);
         } else if (e.target.className === 'edit') {
             editItem(e);
+        } else if (e.target.className === 'item-checkbox') {
+            completeItem(e);
         }
+    });
+});
+
+// Clear all items
+elements.buttonClearAll.forEach(item => {
+    item.addEventListener('click', () => {
+        clearItems(item);
     });
 });

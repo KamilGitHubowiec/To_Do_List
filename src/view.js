@@ -51,3 +51,24 @@ export const editItem = e => {
         // Toggle edit-mode class 
         li.classList.toggle('edit-mode');
 };
+
+// Add item to completed list function
+export const completeItem = e => {
+    const li = e.target.parentElement;
+    const checkbox = li.querySelector('input[type=checkbox]');
+    const listCompleted = elements.listCompleted;
+    const listIncomplete = elements.list;
+    // If checkbox is checked add item to the completed list and if it is not return it to regular list
+    if (checkbox.checked == true) {
+        listCompleted.appendChild(li);
+    } else if (checkbox.checked == false) {
+        listIncomplete.appendChild(li);
+    }
+};
+
+// Clear all items functions
+export const clearItems = item => {
+        const container = item.closest('.container');
+        const list = container.querySelector('.list');
+        list.innerHTML = '';
+};
