@@ -8,49 +8,77 @@
     list-style: none;
     resize: none;
     box-sizing: inherit;
+    font-family: 'Lato', sans-serif;
 }
 
 body {
-    background-color: #102a54;
+    background-image: url(img/bg1.jpg);
+    background-size: cover;
 }
 
+/* colors: white - rgb(250, 246, 246) blue - #5b74c6 green - #4ba04f */
 .container {
     height: 80vh;
     background-color: rgb(250, 246, 246);
-    width: 25%;
-    border-radius: 10px;
+    width: 23%;
+    border-radius: 20px;
     float: left;
-    margin-top: 5vh;
-    margin-left: 5%;
+    margin-top: 7vh;
+    margin-left: 17%;
 }
 
 .header {
-    background-image: url(img/to-do.jpg);
-    background-size: cover;
+    background-image: url(img/bg1.jpg);
     background-position: center;
-    height: 25vh;
+    background-size: cover;
+    height: 15vh;
     border-radius: 10px 10px 0 0;
+    text-align: center;
+    font-size: 30px;
+    vertical-align: middle;
+    font-weight: 600;
+    color: rgb(250, 246, 246);
 }
 
 .content {
-    height: 45vh;
-    overflow: scroll;
+    height: 60vh;
+    overflow: hidden;
+    background-color: rgb(250, 246, 246);
 }
 
 .list {
     height: 100%;
+    overflow: scroll;
 }
 
 .item {
     display: flex;
+    /* background-color: #5b74c6; */
+    border-bottom: #5b74c6 2px solid;
+    padding: 10px;
+    margin: 2px 4px 2px 4px;
+    /* border-radius: 5px; */
+    height: 25px;
+    cursor: pointer;
 }
 
 .edit {
     margin: 0 10px 0 10px;
 }
 
+button {
+    background-color: #5b74c6;
+    border-radius: 5px;
+    color: rgb(250, 246, 246);
+    padding: 5px;
+}
+
+.text {
+    align-self: center;
+}
+
 .add {
-    height: 10vh;
+    height: 5vh;
     width: 100%;
 }
 
@@ -84,19 +112,28 @@ ul li.edit-mode label.text {
 
 
 /************ COMPLETED LIST ***************/
+.container-completed {
+
+}
+
 .header-completed {
-    background-image: url(img/completed.jpg);
-    background-size: cover;
-    background-position: bottom;
-    height: 25vh;
-    border-radius: 10px 10px 0 0;
+    background-image: url(img/bg2.jpg);
 }
 
 .content-completed {
-    height: 50vh;
-    overflow: scroll;
+    height: 60vh;
 }
 
 .list-completed {
     height: 100%;
+}
+
+.container-completed button {
+    background-color: #4ba04f;
+}
+
+
+.list-completed li {
+    /* background-color: #4ba04f; */
+    border-bottom: #4ba04f 2px solid;
 }

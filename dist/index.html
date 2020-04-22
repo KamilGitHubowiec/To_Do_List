@@ -4,53 +4,66 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
     <title>To Do List</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
     
-    <div class="container">
-        <div class="header"></div>
-        <div class="content">
-            <ul class="list">
-                <li class="item">
-                    <input type="checkbox" class="item-checkbox"> <label class="text">Go trum 11:15</label> <input type="text" class="item-input">
-                    <button class="edit">Edit</button>
-                    <button class="delete">Delete</button>
-                </li>
-                <li class="item edit-mode">
-                    <input type="checkbox" class="item-checkbox"> <label class="text">Go train 15:00</label > <input type="text" value="Go train 15:00" class="item-input">
-                    <button class="edit">Edit</button>
-                    <button class="delete">Delete</button>
-                </li>
-            </ul>
+    <div class="body-for-containers">
+        <div class="container">
+            <div class="header">My Tasks</div>
+            <div class="content">
+                <ul class="list">
+                    <li class="item" draggable="true">
+                        <input type="checkbox" class="item-checkbox"> <label class="text">Kamil puścił Bąka</label> <input type="text" class="item-input">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Delete</button>
+                    </li>
+                    <li class="item edit-mode" draggable="true">
+                        <input type="checkbox" class="item-checkbox"> <label class="text">Klaudia wypuściła bengala</label > <input type="text" value="Klaudia wypuściła bengala" class="item-input">
+                        <button class="edit">Save</button>
+                        <button class="delete">Delete</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="add">
+                <input type="text" placeholder="Add a to do item" id="add__input">
+                <button id="add__button">Add item</button>
+                <button class="clear">Clear</button>
+            </div>  
+            
+            <!-- <div class="pagination">
+                <button class="btn-inline results__btn--prev">
+                    <span>Page 1</span>
+                </button>
+                <button class="btn-inline results__btn--next">
+                    <span>Page 3</span>
+                </button>
+            </div> -->
         </div>
 
-        <div class="add">
-            <input type="text" placeholder="Add a to do item" id="add__input">
-            <button id="add__button">Add item</button>
+        <div class="container container-completed">
+            <div class="header header-completed">Completed</div>
+            <div class="content content-completed">
+                <ul class="list list-completed">
+                    <li class="item" draggable="true">
+                        <input type="checkbox" class="item-checkbox"> <label class="text">Oliwier poruszył niebo i ziemie</label> <input type="text" class="item-input">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Delete</button>
+                    </li>
+                    <li class="item" draggable="true">
+                        <input type="checkbox" class="item-checkbox"> <label class="text">Chris wyeliminował ludzkość</label > <input type="text" class="item-input">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Delete</button>
+                    </li>
+                </ul>
+            </div> 
             <button class="clear">Clear</button>
-        </div>  
-    </div>
-
-    <div class="container">
-        <div class="header header-completed"></div>
-        <div class="content content-completed">
-            <ul class="list list-completed">
-                <li class="item">
-                    <input type="checkbox" class="item-checkbox"> <label class="text">Go trum 11:15</label> <input type="text" class="item-input">
-                    <button class="edit">Edit</button>
-                    <button class="delete">Delete</button>
-                </li>
-                <li class="item edit-mode">
-                    <input type="checkbox" class="item-checkbox"> <label class="text">Go train 15:00</label > <input type="text" value="Go train 15:00" class="item-input">
-                    <button class="edit">Edit</button>
-                    <button class="delete">Delete</button>
-                </li>
-            </ul>
-        </div> 
-        <button class="clear">Clear</button>
+        </div>
     </div>
 
     <script src="./bundle.js"></script>
