@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-firestore.js"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -17,16 +21,16 @@
             <div class="header">My Tasks</div>
             <div class="content">
                 <ul class="list">
-                    <li class="item" draggable="true">
-                        <input type="checkbox" class="item-checkbox"> <label class="text">Kamil puścił Bąka</label> <input type="text" class="item-input">
+                    <!-- <li class="item" draggable="true">
+                        <input type="checkbox" class="item-checkbox"> <label class="text">Kamil</label> <input type="text" class="item-input">
                         <button class="edit">Edit</button>
                         <button class="delete">Delete</button>
                     </li>
                     <li class="item edit-mode" draggable="true">
-                        <input type="checkbox" class="item-checkbox"> <label class="text">Klaudia wypuściła bengala</label > <input type="text" value="Klaudia wypuściła bengala" class="item-input">
+                        <input type="checkbox" class="item-checkbox"> <label class="text">Klaudia</label > <input type="text" value="Klaudia wypuściła bengala" class="item-input">
                         <button class="edit">Save</button>
                         <button class="delete">Delete</button>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 
@@ -50,21 +54,48 @@
             <div class="header header-completed">Completed</div>
             <div class="content content-completed">
                 <ul class="list list-completed">
-                    <li class="item" draggable="true">
-                        <input type="checkbox" class="item-checkbox"> <label class="text">Oliwier poruszył niebo i ziemie</label> <input type="text" class="item-input">
+                    <!-- <li class="item" draggable="true">
+                        <input type="checkbox" class="item-checkbox"> <label class="text">Oliwier</label> <input type="text" class="item-input">
                         <button class="edit">Edit</button>
                         <button class="delete">Delete</button>
                     </li>
                     <li class="item" draggable="true">
-                        <input type="checkbox" class="item-checkbox"> <label class="text">Chris wyeliminował ludzkość</label > <input type="text" class="item-input">
+                        <input type="checkbox" class="item-checkbox"> <label class="text">Chris</label > <input type="text" class="item-input">
                         <button class="edit">Edit</button>
                         <button class="delete">Delete</button>
                     </li>
-                </ul>
+                </ul> -->
             </div> 
             <button class="clear">Clear</button>
         </div>
     </div>
+
+
+
+    <!--FIREBASE-->
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBabkSCpFeCTLX0BpvCUR5VWlsa8Xt7WCA",
+            authDomain: "to-do-list-b75a0.firebaseapp.com",
+            databaseURL: "https://to-do-list-b75a0.firebaseio.com",
+            projectId: "to-do-list-b75a0",
+            storageBucket: "to-do-list-b75a0.appspot.com",
+            messagingSenderId: "106170010736",
+            appId: "1:106170010736:web:b00eb13c9ef0f1dc58f8b5",
+            measurementId: "G-XRC3BML3Y7"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        const db = firebase.firestore();
+        db.settings({ timestampsInSnaphots: true })
+    </script>
 
     <script src="./bundle.js"></script>
 </body>

@@ -1,14 +1,13 @@
 import { elements } from './base';
 
 // Get input value
-export const getInput = () => elements.inputAddItem.value;
+const getInput = () => elements.inputAddItem.value;
 // Clear input field
-export const clearInput = () => {
+const clearInput = () => {
     elements.inputAddItem.value = '';
 };
-
-// Create markup with an item function
-export const renderItem = (inputValue) => {
+// Create markup for the item
+const renderItem = (inputValue) => {
     const markup = `
         <li class="item" draggable="true">
             <input type="checkbox" class="item-checkbox"> <label class="text">${inputValue}</label> <input type="text" class="item-input">
@@ -18,6 +17,15 @@ export const renderItem = (inputValue) => {
     `;
     // Add the markup to the ul list
     elements.list.insertAdjacentHTML('beforeend', markup);
+};
+export const createItem = () => {
+    // Get input value and save it to the query variable
+    const query = getInput();
+    // If there is an input value then render the markup
+    if(query) {
+        renderItem(query);
+        clearInput();
+    }
 };
 
 
@@ -55,11 +63,12 @@ export const editItem = e => {
         li.classList.toggle('edit-mode');
 };
 // Clear all items functions
-export const clearItems = item => {
-    const container = item.closest('.container');
+export const clearItems = clearButton => {
+    const container = clearButton.closest('.container');
     const list = container.querySelector('.list');
     list.innerHTML = '';
 };
+
 
 
 

@@ -1,22 +1,14 @@
 import { elements } from './base';
-import { getInput, renderItem, clearInput, deleteItem, editItem, completeItem, clearItems } from './view';
+import { createItem, deleteItem, editItem, completeItem, clearItems } from './view';
 
-const createItem = () => {
-    // Get input value and save it to the query variable
-    const query = getInput();
-    // If there is an input value then render the markup
-    if(query) {
-        renderItem(query);
-        clearInput();
-    }
-};
+//////////////// FIRESTORE /////////////////////
+//saving data
 
 // Add item event listener
 elements.buttonAddItem.addEventListener('click', e => {
     e.preventDefault();
     createItem();
 });
-
 // Delete item && Edit item
 elements.listAll.forEach(item => {
     item.addEventListener('click', e => {
@@ -29,7 +21,6 @@ elements.listAll.forEach(item => {
         }
     });
 });
-
 // Clear all items
 elements.buttonClearAll.forEach(clearButton => {
     clearButton.addEventListener('click', () => {
@@ -37,9 +28,11 @@ elements.buttonClearAll.forEach(clearButton => {
     });
 });
 
-let draggedItem = null;
+
 
 // Drag N Drop
+let draggedItem = null;
+
 elements.listAll.forEach(list => {
     list.addEventListener('dragstart', e => {
         if(e.target.className === 'item') {
