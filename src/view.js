@@ -1,40 +1,48 @@
 import { elements } from './base';
 
 // Get input value
-const getInput = () => elements.inputAddItem.value;
+export const getInput = () => elements.inputAddItem.value;
 // Clear input field
-const clearInput = () => {
+export const clearInput = () => {
     elements.inputAddItem.value = '';
 };
 // Create markup for the item
-const renderItem = (inputValue) => {
+export const renderItem = (doc, listType) => {
     const markup = `
-        <li class="item" draggable="true">
-            <input type="checkbox" class="item-checkbox"> <label class="text">${inputValue}</label> <input type="text" class="item-input">
+        <li class="item" draggable="true" data-id="${doc.id}">
+            <input type="checkbox" class="item-checkbox"> <label class="text">${doc.data().todo}</label> <input type="text" class="item-input">
             <button class="edit">Edit</button>
             <button class="delete">Delete</button>
         </li>
     `;
     // Add the markup to the ul list
-    elements.list.insertAdjacentHTML('beforeend', markup);
-};
-export const createItem = () => {
-    // Get input value and save it to the query variable
-    const query = getInput();
-    // If there is an input value then render the markup
-    if(query) {
-        renderItem(query);
-        clearInput();
+    if (listType === 'To Do') {
+        elements.list.insertAdjacentHTML('beforeend', markup);
+    } else if (listType === 'completed') {
+        elements.listCompleted.insertAdjacentHTML('beforeend', markup);
     }
 };
+
+// export const createItem = () => {
+//     // Get input value and save it to the query variable
+//     const query = getInput();
+//     // If there is an input value then render the markup
+//     if(query) {
+//         renderItem(query);
+//         clearInput();
+//     }
+// };
+
 
 
 
 // Delete item function
 export const deleteItem = e => {
-    // Remove item if class of the target is 'delete' 
     const li = e.target.parentElement;
-    li.parentNode.removeChild(li); 
+    const currentList = li.parentElement;
+    currentList.removeChild(li);
+    const id = e.target.parentElement.getAttribute('data-id');
+    firestore.collection('todos').doc(id).delete();
 };
 // Edit item function
 export const editItem = e => {
@@ -44,15 +52,18 @@ export const editItem = e => {
         // 4. Check if the target li has class of edit-mode
         const li = e.target.parentElement;
         const label = li.querySelector('label[class=text]');
-        const input = li.querySelector('input[class=item-input');
+        const input = li.querySelector('input[class=item-input]');
         const editButton = li.querySelector('.edit');
         const containsClass = li.classList.contains('edit-mode');
+        // Get id of the item
+        const id = e.target.parentElement.getAttribute('data-id');
 
         if (containsClass) {
             // If class of the li = edit-mode
             // label becomes the input value
             label.innerText = input.value;
             editButton.innerText = 'Edit';
+            firestore.collection('todos').doc(id).update({ todo: label.innerText })
         } else {
             // Otherwise input value stores the label
             input.value = label.innerText;
@@ -63,25 +74,34 @@ export const editItem = e => {
         li.classList.toggle('edit-mode');
 };
 // Clear all items functions
-export const clearItems = clearButton => {
+export const clearItems = (clearButton) => {
     const container = clearButton.closest('.container');
     const list = container.querySelector('.list');
     list.innerHTML = '';
+    firestore.collection('todos').get().then(snapshot => {
+        snapshot.docs.forEach(doc => {
+            if (list.className === 'list') {
+                if (doc.data().list === 'To Do') {
+                    doc.ref.delete();
+                }
+            } else if (list.className === 'list list-completed') {
+                if (doc.data().list === 'completed') {
+                    doc.ref.delete();
+                }
+            }
+        })
+    })
 };
-
-
-
-
-// Add item to completed list function
-export const completeItem = e => {
-    const li = e.target.parentElement;
-    const checkbox = li.querySelector('input[type=checkbox]');
-    const listCompleted = elements.listCompleted;
-    const listIncomplete = elements.list;
-    // If checkbox is checked add item to the completed list and if it is not return it to regular list
-    if (checkbox.checked == true) {
-        listCompleted.appendChild(li);
-    } else if (checkbox.checked == false) {
-        listIncomplete.appendChild(li);
-    }
-};
+// // Add item to completed list function
+// export const completeItem = e => {
+//     const li = e.target.parentElement;
+//     const checkbox = li.querySelector('input[type=checkbox]');
+//     const listCompleted = elements.listCompleted;
+//     const listIncomplete = elements.list;
+//     // If checkbox is checked add item to the completed list and if it is not return it to regular list
+//     if (checkbox.checked == true) {
+//         listCompleted.appendChild(li);
+//     } else if (checkbox.checked == false) {
+//         listIncomplete.appendChild(li);
+//     }
+// };

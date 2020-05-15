@@ -1,26 +1,44 @@
 import { elements } from './base';
-import { createItem, deleteItem, editItem, completeItem, clearItems } from './view';
+import { clearInput, getInput, renderItem, deleteItem, editItem, completeItem, clearItems } from './view';
 
 //////////////// FIRESTORE /////////////////////
-//saving data
-
-// Add item event listener
+// Save data to the firestore
 elements.buttonAddItem.addEventListener('click', e => {
     e.preventDefault();
-    createItem();
+    const query = getInput();
+    if (!query) return 
+    // Save data to the firestore if there is an input value
+    firestore.collection('todos').add({
+        todo: query,
+        list: 'To Do'
+    })
+    clearInput();
 });
-// Delete item && Edit item
-elements.listAll.forEach(item => {
-    item.addEventListener('click', e => {
+// Live listener - Outputs data to the DOM and Removes it
+firestore.collection('todos').onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    changes.forEach(change => {
+        if (change.type == 'added'){
+            const listType = change.doc.data().list;
+            renderItem(change.doc, listType);
+        } 
+    })
+})
+
+// Delete item && Edit item && Check item
+elements.listAll.forEach(list => {
+    list.addEventListener('click', e => {
         if (e.target.className === 'delete') {
             deleteItem(e);
         } else if (e.target.className === 'edit') {
             editItem(e);
-        } else if (e.target.className === 'item-checkbox') {
-            completeItem(e);
-        }
+        } 
+        // else if (e.target.className === 'item-checkbox') {
+            // completeItem(e);
+        // }
     });
 });
+
 // Clear all items
 elements.buttonClearAll.forEach(clearButton => {
     clearButton.addEventListener('click', () => {
@@ -38,14 +56,18 @@ elements.listAll.forEach(list => {
         if(e.target.className === 'item') {
             draggedItem = e.target;
             draggedItem.classList.add('dragging');
-            console.log('dragstart');
+            // console.log('dragstart');
         };
     });
 
     list.addEventListener('dragend', e => {
-        if(e.target.className === 'item') {
-            console.log('dragend');
-        };
+        console.log('dragend');
+        const id = draggedItem.getAttribute('data-id');
+        if (draggedItem.parentElement.className == 'list list-completed') {
+            firestore.collection('todos').doc(id).update({ list: 'completed' });
+        } else if (draggedItem.parentElement.className == 'list') {
+            firestore.collection('todos').doc(id).update({ list: 'To Do' });
+        }
     });
 
     list.addEventListener('dragover', e => {
@@ -56,8 +78,6 @@ elements.listAll.forEach(list => {
         } else {
             list.insertBefore(draggedItem, afterElement);
         }
-        // console.log(currentListElements);
-        // const currentListElements = list.querySelectorAll('.item:not(.dragging)');
     });
 
     list.addEventListener('dragenter', e => {

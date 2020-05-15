@@ -93,8 +93,8 @@
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
 
-        const db = firebase.firestore();
-        db.settings({ timestampsInSnaphots: true })
+        const firestore = firebase.firestore();
+        firestore.settings({ timestampsInSnaphots: true })
     </script>
 
     <script src="./bundle.js"></script>
