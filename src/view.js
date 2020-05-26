@@ -23,17 +23,6 @@ export const renderItem = (doc, listType) => {
     }
 };
 
-// export const createItem = () => {
-//     // Get input value and save it to the query variable
-//     const query = getInput();
-//     // If there is an input value then render the markup
-//     if(query) {
-//         renderItem(query);
-//         clearInput();
-//     }
-// };
-
-
 
 
 // Delete item function
@@ -92,16 +81,3 @@ export const clearItems = (clearButton) => {
         })
     })
 };
-// // Add item to completed list function
-// export const completeItem = e => {
-//     const li = e.target.parentElement;
-//     const checkbox = li.querySelector('input[type=checkbox]');
-//     const listCompleted = elements.listCompleted;
-//     const listIncomplete = elements.list;
-//     // If checkbox is checked add item to the completed list and if it is not return it to regular list
-//     if (checkbox.checked == true) {
-//         listCompleted.appendChild(li);
-//     } else if (checkbox.checked == false) {
-//         listIncomplete.appendChild(li);
-//     }
-// };

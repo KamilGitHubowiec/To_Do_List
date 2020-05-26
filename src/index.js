@@ -33,9 +33,6 @@ elements.listAll.forEach(list => {
         } else if (e.target.className === 'edit') {
             editItem(e);
         } 
-        // else if (e.target.className === 'item-checkbox') {
-            // completeItem(e);
-        // }
     });
 });
 
@@ -93,9 +90,6 @@ elements.listAll.forEach(list => {
     });
 });
 
-
-// const draggables = document.querySelectorAll('.draggable')
-// const containers = document.querySelectorAll('.container')
 
 function getDragAfterElement(list, y) {
   const draggableElements = [...list.querySelectorAll('.item:not(.dragging)')];
