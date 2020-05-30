@@ -1,8 +1,11 @@
 import { elements } from './base';
-import { clearInput, getInput, renderItem, deleteItem, editItem, completeItem, clearItems } from './view';
+import { clearInput, getInput, renderItem, deleteItem, editItem, clearItems, addFocus, removeFocus, loadLoginForm, loadSignupForm, clearLists } from './view';
+import { signupNewUser, logoutUser, loginUser, setupUI } from './auth';
 
 //////////////// FIRESTORE /////////////////////
 // Save data to the firestore
+let currentUser;
+
 elements.buttonAddItem.addEventListener('click', e => {
     e.preventDefault();
     const query = getInput();
@@ -10,20 +13,37 @@ elements.buttonAddItem.addEventListener('click', e => {
     // Save data to the firestore if there is an input value
     firestore.collection('todos').add({
         todo: query,
-        list: 'To Do'
+        list: 'To Do',
+        userID: currentUser.uid
+    }).then(() => {
+        clearInput();
+    }).catch(error => {
+        alert(error.message)
     })
-    clearInput();
 });
-// Live listener - Outputs data to the DOM and Removes it
-firestore.collection('todos').onSnapshot(snapshot => {
-    let changes = snapshot.docChanges();
-    changes.forEach(change => {
-        if (change.type == 'added'){
-            const listType = change.doc.data().list;
-            renderItem(change.doc, listType);
-        } 
+// Listen for auth status changes
+auth.onAuthStateChanged(user => {
+    currentUser = user;
+    console.log(currentUser);
+    if(user) {
+    // Live listener - Outputs data to the DOM and Removes it
+    firestore.collection('todos').onSnapshot(snapshot => {
+        let changes = snapshot.docChanges();
+        changes.forEach(change => {
+            if (change.type == 'added' && user.uid == change.doc.data().userID){
+                const listType = change.doc.data().list;
+                renderItem(change.doc, listType);
+            } 
+        })
+        setupUI(user);
     })
-})
+  } else {
+    clearLists();
+    setupUI();
+  }
+});
+
+
 
 // Delete item && Edit item && Check item
 elements.listAll.forEach(list => {
@@ -35,25 +55,19 @@ elements.listAll.forEach(list => {
         } 
     });
 });
-
 // Clear all items
 elements.buttonClearAll.forEach(clearButton => {
     clearButton.addEventListener('click', () => {
         clearItems(clearButton);
     });
 });
-
-
-
 // Drag N Drop
 let draggedItem = null;
-
 elements.listAll.forEach(list => {
     list.addEventListener('dragstart', e => {
         if(e.target.className === 'item') {
             draggedItem = e.target;
             draggedItem.classList.add('dragging');
-            // console.log('dragstart');
         };
     });
 
@@ -89,11 +103,9 @@ elements.listAll.forEach(list => {
         draggedItem.classList.remove('dragging');
     });
 });
-
-
+// Get Drag AFter Element
 function getDragAfterElement(list, y) {
   const draggableElements = [...list.querySelectorAll('.item:not(.dragging)')];
-
   return draggableElements.reduce((closest, child) => {
     const box = child.getBoundingClientRect();
     const offset = y - box.top - box.height / 2;
@@ -104,3 +116,21 @@ function getDragAfterElement(list, y) {
     }
   }, { offset: Number.NEGATIVE_INFINITY }).element
 };
+
+
+
+/////////////////////////////////// LANDING PAGE CODE ///////////////////////////////////////////////////////
+// Add and remove .focus
+elements.loginInputAll.forEach(input => {
+    input.addEventListener('focus', addFocus);
+    input.addEventListener('blur', removeFocus)
+});
+// Load form
+elements.buttonLoadLogin.addEventListener('click', loadLoginForm);
+elements.buttonLoadSignup.addEventListener('click', loadSignupForm);
+// Prevent page reloading
+elements.loginForm.addEventListener('submit', loginUser);
+// Sign up
+elements.signupForm.addEventListener('submit', signupNewUser);
+// Log out
+elements.buttonLogout.addEventListener('click', logoutUser);

@@ -62,7 +62,7 @@ export const editItem = e => {
         // Toggle edit-mode class 
         li.classList.toggle('edit-mode');
 };
-// Clear all items functions
+// Clear all items from the list
 export const clearItems = (clearButton) => {
     const container = clearButton.closest('.container');
     const list = container.querySelector('.list');
@@ -80,4 +80,33 @@ export const clearItems = (clearButton) => {
             }
         })
     })
+};
+// Clear both lists
+export const clearLists = () => {
+    elements.listAll.forEach(list => {
+        list.innerHTML = '';
+    })
+};
+
+
+/////////////////////////////////// LANDING PAGE CODE ///////////////////////////////////////////////////////
+// Add Focus class and remove Focus class
+export const addFocus = (e) => {
+	let parent = e.target.parentNode.parentNode;
+	parent.classList.add('focus');
+};
+export const removeFocus = (e) => {
+	let parent = e.target.parentNode.parentNode;
+	if(e.target.value == ''){
+		parent.classList.remove('focus');
+	}
+};
+// Functions to handle forms changing
+export const loadLoginForm = () => {
+    elements.loginForm.style.display = 'block';
+    elements.signupForm.style.display = 'none';
+};
+export const loadSignupForm = () => {
+    elements.signupForm.style.display = 'block';
+    elements.loginForm.style.display = 'none';
 };

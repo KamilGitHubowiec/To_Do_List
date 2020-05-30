@@ -3,80 +3,143 @@
 <head>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-firestore.js"></script>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" /> -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/20fc14207b.js" crossorigin="anonymous"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
 
     <title>To Do List</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    
-    <div class="body-for-containers">
+    <!-- LANDING PAGE -->
+    <div class="landing-page" style="display: none;">
+        <img class="wave" src="img/wave.png">
+        <div class="landing-page_content">
+            <div class="phone">
+                <img src="img/phone.svg">
+            </div>
+            <div class="forms">
+                <form class="login-form">
+                    <img src="img/avatar.svg" class="avatar">
+                    <h2 class="title">Log in</h2>
+                    <div class="input-div top">
+                        <div class="input-i">
+                            <i class="fas fa-at"></i>
+                        </div>
+                        <div>
+                            <h5>Email</h5>
+                            <input type="email" class="input" id="login-email" required>
+                        </div>
+                    </div>
+                    <div class="input-div bottom">
+                        <div class="input-i"> 
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div>
+                            <h5>Password</h5>
+                            <input type="password" class="input" id="login-password" required>
+                        </div>
+                    </div>
+                    <a href="#" class="load-signup">Sign up here -></a>
+                    <input type="submit" class="button-submit" value="Log in">
+                </form>
+
+                <form class="signup-form" style="display: none;">
+                    <img src="img/avatar.svg" class="avatar">
+                    <h2 class="title">Sign up</h2>
+                    <div class="input-div top">
+                        <div class="input-i">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h5>Name</h5>
+                            <input type="text" class="input name" required>
+                        </div>
+                    </div>
+                    <div class="input-div">
+                        <div class="input-i">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h5>Surname</h5>
+                            <input type="text" class="input surname" required>
+                        </div>
+                    </div>
+                    <div class="input-div">
+                        <div class="input-i">
+                            <i class="fas fa-at"></i>
+                        </div>
+                        <div>
+                            <h5>Email</h5>
+                            <input type="email" class="input" id="signup-email" required>
+                        </div>
+                    </div>
+                    <div class="input-div bottom">
+                        <div class="input-i"> 
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div>
+                            <h5>Password</h5>
+                            <input type="password" class="input" id="signup-password" required>
+                        </div>
+                    </div>
+                    <a href="#" class="load-login">Already have an account? Login here -></a>
+                    <p class="account-created-notice"></p>
+                    <input type="submit" class="button-submit" value="Sign up">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- CONTAINERS FOR THE TODOS -->
+    <div class="body-for-containers" style="display: none;">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" class="nav-button" id="account">Account</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-button" id="logout">Logout</a>
+                </li>
+            </ul>
+        </nav>
+
         <div class="container">
             <div class="header">My Tasks</div>
             <div class="content">
                 <ul class="list">
-                    <!-- <li class="item" draggable="true">
-                        <input type="checkbox" class="item-checkbox"> <label class="text">Kamil</label> <input type="text" class="item-input">
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                    </li>
-                    <li class="item edit-mode" draggable="true">
-                        <input type="checkbox" class="item-checkbox"> <label class="text">Klaudia</label > <input type="text" value="Klaudia wypuściła bengala" class="item-input">
-                        <button class="edit">Save</button>
-                        <button class="delete">Delete</button>
-                    </li> -->
                 </ul>
             </div>
-
             <div class="add">
                 <input type="text" placeholder="Add a to do item" id="add__input">
                 <button id="add__button">Add item</button>
                 <button class="clear">Clear</button>
             </div>  
-            
-            <!-- <div class="pagination">
-                <button class="btn-inline results__btn--prev">
-                    <span>Page 1</span>
-                </button>
-                <button class="btn-inline results__btn--next">
-                    <span>Page 3</span>
-                </button>
-            </div> -->
         </div>
 
         <div class="container container-completed">
             <div class="header header-completed">Completed</div>
             <div class="content content-completed">
                 <ul class="list list-completed">
-                    <!-- <li class="item" draggable="true">
-                        <input type="checkbox" class="item-checkbox"> <label class="text">Oliwier</label> <input type="text" class="item-input">
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                    </li>
-                    <li class="item" draggable="true">
-                        <input type="checkbox" class="item-checkbox"> <label class="text">Chris</label > <input type="text" class="item-input">
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                    </li>
-                </ul> -->
+                </ul>
             </div> 
             <button class="clear">Clear</button>
         </div>
     </div>
 
 
-
     <!--FIREBASE-->
     <!-- TODO: Add SDKs for Firebase products that you want to use
         https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
-
     <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
@@ -93,7 +156,10 @@
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
 
+        //Store data in const firestore and create reference to firebase authenticaiton
+        const auth = firebase.auth();
         const firestore = firebase.firestore();
+
         firestore.settings({ timestampsInSnaphots: true })
     </script>
 
