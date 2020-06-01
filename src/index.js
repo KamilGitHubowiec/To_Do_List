@@ -24,7 +24,6 @@ elements.buttonAddItem.addEventListener('click', e => {
 // Listen for auth status changes
 auth.onAuthStateChanged(user => {
     currentUser = user;
-    console.log(currentUser);
     if(user) {
     // Live listener - Outputs data to the DOM and Removes it
     firestore.collection('todos').onSnapshot(snapshot => {
@@ -103,7 +102,7 @@ elements.listAll.forEach(list => {
         draggedItem.classList.remove('dragging');
     });
 });
-// Get Drag AFter Element
+// Get Drag After Element
 function getDragAfterElement(list, y) {
   const draggableElements = [...list.querySelectorAll('.item:not(.dragging)')];
   return draggableElements.reduce((closest, child) => {

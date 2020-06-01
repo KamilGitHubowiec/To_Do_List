@@ -3,9 +3,7 @@ import { elements } from './base';
 // Get input value
 export const getInput = () => elements.inputAddItem.value;
 // Clear input field
-export const clearInput = () => {
-    elements.inputAddItem.value = '';
-};
+export const clearInput = () => elements.inputAddItem.value = '';
 // Create markup for the item
 export const renderItem = (doc, listType) => {
     const markup = `
@@ -91,11 +89,11 @@ export const clearLists = () => {
 
 /////////////////////////////////// LANDING PAGE CODE ///////////////////////////////////////////////////////
 // Add Focus class and remove Focus class
-export const addFocus = (e) => {
+export const addFocus = e => {
 	let parent = e.target.parentNode.parentNode;
 	parent.classList.add('focus');
 };
-export const removeFocus = (e) => {
+export const removeFocus = e => {
 	let parent = e.target.parentNode.parentNode;
 	if(e.target.value == ''){
 		parent.classList.remove('focus');

@@ -6,6 +6,7 @@ Technologies used:
 - JavaScript
 - WebPack
 - Firebase - Firestore
+- SASS
 
 Funcionality:
 - Insert name of the todo in the input field and press "Add Item" button
@@ -14,7 +15,10 @@ Funcionality:
 - Drag N Drop - you can drag an item and change its position in the list or move it to the other list
 - Click "Clear" button to clear all of the todo's in the list
 
-Firebase - All todos are stored in firestore 
+Firebase: 
+- All todos are stored in firestore 
+- Create new account
+- Tasks are assigned to your account
 
 To run the app:
 - install node modules

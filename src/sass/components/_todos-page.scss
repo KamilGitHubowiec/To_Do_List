@@ -1,0 +1,89 @@
+.body-for-containers{
+	height: 100vh;
+	background-color: $color-primary;
+}
+
+.container{
+	height: 80vh;
+	background-color: $white;
+	width: 23%;
+	border-radius: $radius-default;
+	overflow: hidden;
+	float: left;
+	margin-top: 1vh;
+	margin-left: 17%;
+}
+
+.header{
+	background-image: url(img/bg1.jpg);
+	background-position: center;
+	background-size: cover;
+	height: 15vh;
+	text-align: center;
+	font-size: 3rem;
+	vertical-align: middle;
+	font-weight: 600;
+	color: $white;
+}
+
+.content{
+	height: 60vh;
+	overflow: hidden;
+	background-color: $white;
+}
+
+.list{
+	height: 100%;
+	overflow: scroll;
+}
+
+.item{
+	display: flex;
+	border-bottom: $color-primary .2rem solid;
+	padding: 1rem;
+	margin: .2rem .4rem .2rem .4rem;
+	height: 2.5rem;
+	cursor: pointer;
+}
+
+.edit{ margin: 0 1rem 0 1rem; }
+
+button {
+	background-color: $color-primary;
+	border-radius: $radius-default;
+	color: $white;
+	padding: .5rem;
+}
+
+.text{ align-self: center; }
+
+.add{
+	height: 5vh;
+	width: 100%;
+}
+
+#add__input{ display: inline-block; }
+
+#add__button{ display: inline-block; }
+
+/* 
+1. Hide input field in regular item
+2. Display input field in edit item mode
+3. Hide label in edit item mode
+*/
+ul li.item input[type=text]{ display: none; }
+
+ul li.edit-mode input[type=text]{ display: inline-block; }
+
+ul li.edit-mode label.text{ display: none; }
+
+/* COMPLETED LIST */
+.header-completed{ background-image: url(img/bg2.jpg); }
+
+.content-completed{ height: 60vh; }
+
+.list-completed{ height: 100%; }
+
+.container-completed button{ background-color: $green; }
+
+.list-completed li{ border-bottom: $green .2rem solid; }
