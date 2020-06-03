@@ -28,7 +28,7 @@
 		min-height: 20px;
 		margin-bottom: .8rem;
 		padding: .8rem;
-		background-color: $white;
+		background-color: #ffffffe8;
 		border-radius: $radius-default;
 		box-shadow: 0 1px rgba(9, 30, 66, .25);
 		font-weight: 400;
@@ -37,6 +37,9 @@
 			font-size: 1.3rem;
 			max-width: 153px;
 			word-wrap: break-word;
+		}
+		&:hover{
+			background-color: #ffffff67;
 		}
 	}	
 }

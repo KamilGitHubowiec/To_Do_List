@@ -209,7 +209,7 @@ body {
     min-height: 20px;
     margin-bottom: .8rem;
     padding: .8rem;
-    background-color: #fff;
+    background-color: #ffffffe8;
     border-radius: 3px;
     box-shadow: 0 1px rgba(9, 30, 66, 0.25);
     font-weight: 400;
@@ -218,6 +218,8 @@ body {
       font-size: 1.3rem;
       max-width: 153px;
       word-wrap: break-word; }
+    .container .item:hover {
+      background-color: #ffffff67; }
 
 button {
   max-height: 15px;
