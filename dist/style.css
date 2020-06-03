@@ -182,13 +182,15 @@ body {
     justify-content: center; } }
 
 .container {
-  width: 27.2rem;
   margin: .8rem .4rem;
   padding: .8rem;
+  max-height: 80vh;
+  width: 27.2rem;
   background-color: #ebecf0;
   border-radius: 3px;
   font-size: 1.4rem;
   overflow: hidden;
+  overflow-y: auto;
   float: left; }
   .container:first-child {
     margin-left: .8rem; }
