@@ -8,7 +8,7 @@ export const clearInput = () => elements.inputAddItem.value = '';
 export const renderItem = (doc, listType) => {
     const markup = `
         <li class="item" draggable="true" data-id="${doc.id}">
-            <input type="checkbox" class="item-checkbox"> <label class="text">${doc.data().todo}</label> <input type="text" class="item-input">
+            <label class="text">${doc.data().todo}</label> <input type="text" class="item-input">
             <button class="edit">Edit</button>
             <button class="delete">Delete</button>
         </li>

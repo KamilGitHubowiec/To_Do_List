@@ -10,7 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" /> -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/20fc14207b.js" crossorigin="anonymous"></script>
     <link href="style.css" rel="stylesheet" type="text/css" />
 
@@ -102,36 +104,48 @@
     <!-- CONTAINERS FOR THE TODOS -->
     <div class="body-for-containers" style="display: none;">
         <nav>
-            <ul>
+            <a href="#" class="logo-icon"><i class="fas fa-th-list"></i> <span class="logo-text">TodoList</span></a>
+            <ul class="list-1">
                 <li>
-                    <a href="#" class="nav-button" id="account">Account</a>
+                    <a href="#" class="nav-button" id="home"><i class="fas fa-home"></i></a>
                 </li>
                 <li>
-                    <a href="#" class="nav-button" id="logout">Logout</a>
+                    <a href="#" class="nav-button"><i class="fas fa-table"></i> <span>Tablice</span></a>
                 </li>
+            </ul>
+            <ul class="list-2">
+                <li>
+                    <a href="#" class="" id="account">KG</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-button" id="logout"><i class="fas fa-sign-out-alt"></i></a>
+                </li>
+                
             </ul>
         </nav>
 
-        <div class="container">
-            <div class="header">My Tasks</div>
-            <div class="content">
-                <ul class="list">
-                </ul>
+        <div class="containers-canvas">
+            <div class="container">
+                <div class="container__header">My Tasks</div>
+                <div class="content">
+                    <ul class="list">
+                    </ul>
+                </div>
+                <div class="add">
+                    <input type="text" placeholder="Add a to do item" id="add__input">
+                    <button id="add__button">Add item</button>
+                    <button class="clear">Clear</button>
+                </div>  
             </div>
-            <div class="add">
-                <input type="text" placeholder="Add a to do item" id="add__input">
-                <button id="add__button">Add item</button>
-                <button class="clear">Clear</button>
-            </div>  
-        </div>
 
-        <div class="container container-completed">
-            <div class="header header-completed">Completed</div>
-            <div class="content content-completed">
-                <ul class="list list-completed">
-                </ul>
-            </div> 
-            <button class="clear">Clear</button>
+            <div class="container container-completed">
+                <div class="container__header">Completed</div>
+                <div class="content content-completed">
+                    <ul class="list list-completed">
+                    </ul>
+                </div> 
+                <button class="clear">Clear</button>
+            </div>
         </div>
     </div>
 

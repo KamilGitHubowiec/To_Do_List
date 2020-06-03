@@ -1,17 +1,70 @@
 nav{ 
-  display: block;
-  height: 4rem;
-  background: rgba(0, 0, 0, 0.15); 
+  display: flex;
+  height: 3.8rem;
+  background-color: rgba(0, 0, 0, 0.15); 
   ul{
     li{
-      float: right;
-      margin: 2rem 3rem 0 0;    
+      transition: 1.5s;
+      margin: 8px 1px 0 0;    
+      display: inline-block;
+      &:first-child{
+        margin-left: 5px;
+      }
+      a:hover{
+        background-color: $color-secondary-dark;
+      }
+      a:active{
+        background-color: $color-secondary-darkest;
+      }
     }
   }
-}
-
-.nav-button{
-	padding: .5rem 1.5rem;
-	background-color: $white;
-	border-radius: .5rem;
+  .list-1{
+    justify-content: flex-start;
+    flex-grow: 1;
+  }
+  .list-2{
+    justify-content: flex-end;
+    flex-grow: 1;
+    li{
+      float: right;
+    }
+  }
+  .nav-button{
+    padding: $padding-default;
+    border-radius: $radius-default;
+    background-color: $color-secondary;
+    color: $white;
+    font-size: $font-icon;
+    font-weight: 100;
+  }
+  #account{
+    padding: .5rem .5rem;
+    height: 3.2rem;
+    width: 3.2rem;
+    border-radius: 100%;
+    background-color: #dfe1e6;
+    color: $dark-blue;
+    font-size: $font-text-small;
+    font-weight: 700;
+  }
+  span{
+    font-size: $font-text-small;
+    font-weight: 600;
+    padding-left: .6rem;
+  }
+  .logo-icon{
+    margin-top: 5px;
+    color: rgba($white, .5);
+    font-size: $font-icon;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  .logo-text{
+    padding-left: 0;
+    color: rgba($white, .5);
+    font-family: 'Pacifico', cursive;
+    font-size: 16px;
+  }
 }
