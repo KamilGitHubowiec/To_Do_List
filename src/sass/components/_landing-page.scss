@@ -126,7 +126,8 @@
 	border-radius: 2.5rem;
 	outline: none;
 	border: none;
-	background-image: linear-gradient(to right, $color-primary, $color-primary-dark, $color-primary);
+	// background-image: linear-gradient(to right, $color-primary, $color-primary, rgba($color-primary, .9));
+	background-color: $color-primary;
 	background-size: 200%;
 	font-size: 1.9rem;
 	color: #fff;
@@ -135,7 +136,7 @@
 	margin: 1.6rem 0;
 	cursor: pointer;
   transition: .5s;
-  &:hover{ background-position: right; }
+  &:hover{ background-color: rgba($color-primary, .9); }
 }
 
 @media screen and (max-width: 105rem){

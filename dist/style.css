@@ -144,7 +144,7 @@ body {
   border-radius: 2.5rem;
   outline: none;
   border: none;
-  background-image: linear-gradient(to right, #0079bf, #056daa, #0079bf);
+  background-color: #0079bf;
   background-size: 200%;
   font-size: 1.9rem;
   color: #fff;
@@ -154,7 +154,7 @@ body {
   cursor: pointer;
   transition: .5s; }
   .button-submit:hover {
-    background-position: right; }
+    background-color: rgba(0, 121, 191, 0.9); }
 
 @media screen and (max-width: 105rem) {
   .form-phone-container {

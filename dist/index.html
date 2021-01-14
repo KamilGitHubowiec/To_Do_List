@@ -62,7 +62,7 @@
                         </div>
                         <div>
                             <h5>Name</h5>
-                            <input type="text" class="input name" required>
+                            <input type="text" class="input" id="signup-name" required>
                         </div>
                     </div>
                     <div class="input-div">
@@ -71,7 +71,7 @@
                         </div>
                         <div>
                             <h5>Surname</h5>
-                            <input type="text" class="input surname" required>
+                            <input type="text" class="input" id="signup-surname" required>
                         </div>
                     </div>
                     <div class="input-div">
@@ -115,7 +115,7 @@
             </ul>
             <ul class="list-2">
                 <li>
-                    <a href="#" class="" id="account">KG</a>
+                    <a href="#" class="" id="account"></a>
                 </li>
                 <li>
                     <a href="#" class="nav-button" id="logout"><i class="fas fa-sign-out-alt"></i></a>
@@ -168,7 +168,7 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
+        // firebase.analytics();
 
         //Store data in const firestore and create reference to firebase authenticaiton
         const auth = firebase.auth();

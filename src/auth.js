@@ -9,7 +9,14 @@ export const signupNewUser = e => {
   const password = elements.signupForm['signup-password'].value;
 
   // Sign up the user
-  auth.createUserWithEmailAndPassword(email, password).then(() => {
+  auth.createUserWithEmailAndPassword(email, password).then(cred => {
+    // we use return so that we can use .then after instaed of nesting
+    // We create new document with the id of the user id
+    return firestore.collection('users').doc(cred.user.uid).set({
+      name: elements.signupForm['signup-name'].value,
+      surname: elements.signupForm['signup-surname'].value
+    })
+  }).then(() => {
     // Clear form and update UI
     elements.signupForm.reset();
     elements.accountCreatedNotice.innerText = 'Your account has been created';  
@@ -37,6 +44,13 @@ export const loginUser = e => {
 // Setup user interface - if logged in show todo page, if logged out show landing page
 export const setupUI = user => {
   if (user) {
+    // Set users credentials as his avatar
+    firestore.collection('users').doc(user.uid).get().then(doc => {
+      const firstLetterOfName = doc.data().name.toUpperCase().charAt(0);
+      const firstLetterOfSurname = doc.data().surname.toUpperCase().charAt(0);
+      elements.account.innerText = `${firstLetterOfName + firstLetterOfSurname}`;
+    })
+
     // toggle UI elements
     elements.containerBody.style.display = 'block';
     elements.landingPage.style.display = 'none';

@@ -26,5 +26,6 @@ export const elements = {
     buttonSubmit: document.querySelector('.button-submit'),
     accountCreatedNotice: document.querySelector('.account-created-notice'),
 
-    buttonLogout: document.querySelector('#logout')
+    buttonLogout: document.querySelector('#logout'),
+    account: document.querySelector('#account')
 };
